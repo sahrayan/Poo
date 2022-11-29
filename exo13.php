@@ -1,18 +1,22 @@
 <?php
 
-class voiture{
+class Voiture{
     private string $_marque;
-    private $_modele;
+    private string $_modele;
     private int $_nBPortes;
-    private $_vitesseActuelle;
-    private $_Demarrer;
+    private float $_vitesseActuelle;
+    private $_statut;
 
-    function __construct(string $marque,$modele,int $porte){;
+    function __construct(string $marque,string $modele,int $porte,float $VitesseActuelle,$statut){;
     $this->_marque = $marque;
-    $this->_modèle = $modele;
+    $this->_modele = $modele;
     $this->_nBPortes = $porte;
-    $this->_vitesseActuelle = 0;
-    $this->_Demarrer = true;
+    $this->_vitesseActuelle = $VitesseActuelle;
+    $this->_statut = $statut;
+
+
+
+
     }
     public function getMarque():string{
     return $this->_marque;
@@ -21,6 +25,10 @@ class voiture{
         $this->_marque = $marque ;
         return $this;
     }
+
+
+
+
     public function getModele():string{
         return $this->_modele;
     }
@@ -28,6 +36,10 @@ class voiture{
         $this->_modèle = $modele ;
         return $this;
     }
+
+
+
+
     public function getPorte():int{
         return $this->_nBPortes;
     }
@@ -35,38 +47,42 @@ class voiture{
         $this->_nBPortes = $porte ;
         return $this;
     }
-    public function getVitesse(){
+
+
+
+    public function getVitesse():float{
         return $this->_vitesseActuelle;
     }
-    public function setVitesse(){
-        $this->_vitesseActuelle = 0;
-        return $this;
-    }
-    public function getDemarrer(){
-        return $this->_Demarrer;
-    }
-    public function setDemarrer(){
-        $this->_Demarrer = true;
-        return $this;
+    public function setVitesse($vitesse){
+        $this->_vitesseActuelle = $vitesse;
+        echo $this. " prend la vitesse de ".$vitesse. "km/h";
     }
 
+    public function __toString()
+    {
+        return $this->_marque." ".$this->_modele ;
+    }
+
+    public function getStatut(){
+        return $this->_statut;
+    }
+    public function setStatut(){
+        $this->_statut = true;
+        return "le vehicule demarre";
+    }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public function verifieStatut(){
+        if($this->_statut = 0){
+        echo "le vehicule " . $this->_marque. " ".$this->_modele. " n est pas demarrer<br>";
+        }elseif ($this->_statut = 1){
+            echo "le vehicule " .$this->_marque. " ".$this->_modele. " est demarrer<br>";
+        }
+    
+    }
+    
 
 
 
