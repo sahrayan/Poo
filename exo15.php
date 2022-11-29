@@ -1,8 +1,6 @@
-<h1>Exercice 15</h1>
-
+<h1>Exercice 15 PHP 1</h1>
 <?php
 
-//debut
 class Personne {
 
 
@@ -23,7 +21,7 @@ class Personne {
 
     }
 
-    
+
 
     public function getName(){
 
@@ -57,9 +55,8 @@ class Personne {
         $this->_birthday=$bday;
 
     }
-    private function calcAge(){ //pour calculer l'age
+    private function calcAge(){ 
     
-
         $today=date_create();
         $bd=$this->getBirthDay();
         $bd=date_create($bd);
@@ -68,3 +65,19 @@ class Personne {
 
         return $age;
     }
+    public function displayUser () {
+
+        $age = $this->calcAge();
+
+        echo $this->getFirstName() ." ". $this->getName() ." a " .$age->y. " ans<br>";
+
+    }
+};
+$p1 = new Personne("DUPONT","Rayan","2004-01-27");
+$p2 = new Personne("Loukili","Jawad","1967-01-02");
+
+$p1->setName("Raihani");
+
+$p1->displayUser();
+
+?>
