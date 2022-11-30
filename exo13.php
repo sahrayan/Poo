@@ -51,9 +51,13 @@ class Voiture{
     public function getVitesse():float{
         return $this->_vitesseActuelle;
     }
-    public function setVitesse($vitesse){
-        $this->_vitesseActuelle = $vitesse;
-        echo $this. " prend la vitesse de ".$vitesse. "km/h";
+    public function setVitesse( float $VitesseActuelle){
+        if ($this->_vitesseActuelle > 0 && $this-> _vitesseActuelle <= 120){
+        }elseif ($this -> _vitesseActuelle  > 120){
+            echo "le vehicule dépasse la vitesse limite qui est de 120 km/h";
+        }
+        
+       
     }
 
     public function __toString()
@@ -67,7 +71,7 @@ class Voiture{
     public function setStatut($pipi)
     {
         $this->_statut = $pipi;
-        return "le vehicule demarre";
+        return "Le vehicule demarré";
     }
 
 
@@ -76,30 +80,32 @@ class Voiture{
     public function verifieStatut(){
         if($this->_statut === 0){
             
-        echo "le vehicule " . $this->_marque. " ".$this->_modele. " n est pas demarrer<br>";
+        echo "Le vehicule " . $this->_marque. " ".$this->_modele. " n est pas demarré<br>";
         }elseif ($this->_statut === 1){
-            echo "le vehicule " .$this->_marque. " ".$this->_modele. " est demarrer<br>";
+            echo "Le vehicule " .$this->_marque. " ".$this->_modele. " est demarré<br>";
         }
     
     }
     public function Demarrer(){
         if($this->_statut===0){
         $this->_statut = 1;
-        echo "la voiture demarre";
+        echo "La voiture demarre et peux avancer";
+        }elseif ($this ->_statut === 1){
+            $this->_statut = 0;
+            echo " La voiture va étre a l'arrét";
         }
     }
-    public function Avancer(){
-
-    }
+    public 
 
 
-    public function verifieVitesse(){
-        if ($this ->Setvitesse > 0 && $this->Setvitesse  < 120 ){
-            echo "<br> le vehicule va a " .$this->Setvitesse . " km/h ";
-        }elseif ($this ->Setvitesse  > 121 && $this->Setvitesse < 150){
-            echo "le vehicule dépasse la vitesse limite qui est de 120 km/h";
-        }
-    }
+
+    // public function verifieVitesse(){
+    //     if ($this ->_vitesseActuelle > 0 && $this-> _vitesseActuelle  <= 120 ){
+    //         echo "<br> le vehicule va a " .$this-> _vitesseActuelle  . " km/h ";
+    //     }elseif ($this -> _vitesseActuelle  > 120){
+    //         echo "le vehicule dépasse la vitesse limite qui est de 120 km/h";
+    //     }
+    // }
     
 
 }
