@@ -21,11 +21,14 @@ class Voiture{
     $this->_modele = $modele ;
     return $this->_modele;
     }
+    public function dispInfs(){
+    echo "Voici le vehicule " . $this->_marque. " ".$this->_modele. " <br>";
+    }  
 }
 class VoitureElec extends Voiture{
-    private string $_autonomie
+    private string $_autonomie;
 
-    function __construct(string $marque, string $modele, int $_autonomie){
+    function __construct(string $marque, string $modele, int $autonomie){
     $this->_autonomie = $autonomie;
     parent::__construct($marque, $modele);
     }
@@ -37,12 +40,10 @@ class VoitureElec extends Voiture{
     return $this->_autonomie;
     }
 
-    public function Info($auto)
-    if($this->getAutonomie()==1){
-        $this->setAutonomie($this->getAutonomie());
-        echo "la voiture a " .$auto. " % d'autonomie.";
+    public function dispInfos(){
+    echo parent:: dispInfs();
+    echo "la voiture a " .$this->getAutonomie(). " mAh d'autonomie.<br>";
     }
-
 
 
 }
