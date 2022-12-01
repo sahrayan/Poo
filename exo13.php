@@ -5,15 +5,14 @@ class Voiture{
     private string $_modele;
     private int $_nBPortes;
     private float $_vitesseActuelle;
-    private $_statut;
+    private bool $_statut;
 
-    function __construct(string $marque,string $modele,int $porte,float $VitesseActuelle, int $statut)
-    {
+    function __construct(string $marque,string $modele,int $porte){
     $this->_marque = $marque;
     $this->_modele = $modele;
     $this->_nBPortes = $porte;
-    $this->_vitesseActuelle = $VitesseActuelle;
-    $this->_statut = $statut;
+    $this->_vitesseActuelle = 0;
+    $this->_statut = 0;
     }
 
     public function getMarque():string{
@@ -43,22 +42,20 @@ class Voiture{
     }
     public function setPorte(int $porte){
         $this->_nBPortes = $porte ;
-        return $this;
+        return $this->_nBPortes;
     }
-
-
-
+    
+    
+    
     public function getVitesse():float{
         return $this->_vitesseActuelle;
     }
-    public function setVitesse( float $VitesseActuelle){
-        if ($this->_vitesseActuelle > 0 && $this-> _vitesseActuelle <= 120){
-        }elseif ($this -> _vitesseActuelle  > 120){
-            echo "le vehicule dépasse la vitesse limite qui est de 120 km/h";
-        }
-        
-       
+    
+    public function setVitesse(float $vitesse){
+        $this->_vitesseActuelle = $vitesse ;
+        return $this->_vitesseActuelle;
     }
+    
 
     public function __toString()
     {
@@ -68,34 +65,82 @@ class Voiture{
     public function getStatut(){
         return $this->_statut;
     }
-    public function setStatut($pipi)
+    public function setStatut($avance)
     {
-        $this->_statut = $pipi;
-        return "Le vehicule demarré";
+        $this->_statut = $avance;
+        return $this->_statut;
     }
 
 
+   
 
 
     public function verifieStatut(){
-        if($this->_statut === 0){
-            
-        echo "Le vehicule " . $this->_marque. " ".$this->_modele. " n est pas demarré<br>";
-        }elseif ($this->_statut === 1){
+        if($this->getStatut() == 0){
+            echo "Le vehicule " . $this->_marque. " ".$this->_modele. " n est pas demarré<br>";
+        }else{
             echo "Le vehicule " .$this->_marque. " ".$this->_modele. " est demarré<br>";
         }
     
     }
+
     public function Demarrer(){
-        if($this->_statut===0){
-        $this->_statut = 1;
-        echo "La voiture demarre et peux avancer";
-        }elseif ($this ->_statut === 1){
-            $this->_statut = 0;
-            echo " La voiture va étre a l'arrét";
+
+        if($this->getStatut()==0){
+            $this->setStatut(1);
+            echo "La voiture demarre et peux avancer<br>";
+        }elseif ($this ->_statut == 1){
+            echo " La voiture est deja démarrer<br>";
         }
     }
-    public 
+    
+    public function Accelerer($vitesse){
+        if($this->getStatut() == 1){
+            $this->setVitesse($this->getVitesse()+$vitesse);
+            echo "La voiture accelere de " .$vitesse. " km/h<br>";
+        }
+        
+    }
+    public function Ralentir($vitesse){
+        if($this->_vitesseActuelle > 0){
+            $this ->_vitesseActuelle -= $vitesse;
+            echo "La voiture ralentit de " .$vitesse. " km/h<br>";
+        }else{
+            echo "La voiture est a l arret et ne pas ralentir<br>";
+        }
+
+    }
+
+    public function Arret(){
+
+        if($this->getStatut()===1){
+            $this->setStatut(0);
+            echo "La voiture s'arrete <br>";
+        }elseif ($this ->_statut === 0){
+            echo " La voiture est deja eteinte<br>";
+        }
+    }
+
+  public function verifieVitesse(){
+        echo "Le vehicule va a " .$this-> _vitesseActuelle  . " km/h <br>";
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+}
+    // public function Arret(){
+    //     if ($this ->_statut===0)
+    //     echo "la voiture peux s'arreter "
+    // }
 
 
 
@@ -106,9 +151,8 @@ class Voiture{
     //         echo "le vehicule dépasse la vitesse limite qui est de 120 km/h";
     //     }
     // }
-    
 
-}
+
 
 
 ?>
