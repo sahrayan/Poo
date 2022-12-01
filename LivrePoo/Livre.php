@@ -7,12 +7,14 @@ class Livre{
     private int $_annee;
     private int $_page;
     private int $_prix;
+    private auteur $_auteur
 
-    function __construct(string $titre, int $annee, int $page, int $prix,){
+    function __construct(string $titre, int $annee, int $page, int $prix, Auteur $auteur){
         $this->_titre = $titre;
         $this->_annee = $annee;
         $this->_page = $page;
         $this->_prix = $prix;
+        $this->_auteur = $auteur
     }
     public function getTitre():string{
         return $this->_titre;
@@ -41,6 +43,18 @@ class Livre{
     public function setPrix(int $prix){
         $this->_prix = $prix ;
         return $this;
+    }
+    public function getAuteur():auteur{
+        return $this->_auteur;
+    }
+    public function setAuteur(Auteur $auteur){
+        $this->_auteur = $auteur ;
+        return $this;   
+    }
+
+    public function dispInfo(){
+        
+
     }
 
 }
