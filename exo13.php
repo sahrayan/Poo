@@ -93,7 +93,6 @@ class Voiture{
             echo " La voiture est deja démarrer<br>";
         }
     }
-    
     public function Accelerer($vitesse){
         if($this->getStatut() == 1){
             $this->setVitesse($this->getVitesse()+$vitesse);
