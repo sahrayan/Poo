@@ -7,14 +7,16 @@ class Livre{
     private int $_annee;
     private int $_page;
     private int $_prix;
-    private auteur $_auteur
+    private Auteur $_auteur;
 
-    function __construct(string $titre, int $annee, int $page, int $prix, Auteur $auteur){
+    function __construct(string $titre, int $annee, int $page, int $prix , Auteur $auteur){
         $this->_titre = $titre;
         $this->_annee = $annee;
         $this->_page = $page;
         $this->_prix = $prix;
-        $this->_auteur = $auteur
+        $this->_auteur = $auteur;
+        $this->_auteur->addLivre($this);
+        
     }
     public function getTitre():string{
         return $this->_titre;
@@ -33,8 +35,8 @@ class Livre{
     public function getPage():int{
         return $this->_page;
     }
-    public function setPage(int $modele){
-        $this->_page = $page ;
+    public function setPage(int $page){
+        $this->_page = $page;
         return $this;
     }
     public function getPrix():int{
@@ -44,17 +46,17 @@ class Livre{
         $this->_prix = $prix ;
         return $this;
     }
-    public function getAuteur():auteur{
+    public function getAuteur():Auteur{
         return $this->_auteur;
     }
     public function setAuteur(Auteur $auteur){
         $this->_auteur = $auteur ;
-        return $this;   
+        return $this;
     }
 
-    public function dispInfo(){
-        
-
+    public function __toString()
+    {
+        return $this->getTitre()." (". $this->getAnnee().")"." : ". $this->getPage()." pages / ". $this->getPrix()."€";
     }
 
 }
