@@ -15,9 +15,11 @@ class Livre{
         $this->_page = $page;
         $this->_prix = $prix;
         $this->_auteur = $auteur;
+//         rajout des auteur dans livre
         $this->_auteur->addLivre($this);
         
     }
+//     Methode
     public function getTitre():string{
         return $this->_titre;
     }
@@ -53,7 +55,7 @@ class Livre{
         $this->_auteur = $auteur ;
         return $this;
     }
-
+// retourne les informations
     public function __toString()
     {
         return $this->getTitre()." (". $this->getAnnee().")"." : ". $this->getPage()." pages / ". $this->getPrix()."€";
